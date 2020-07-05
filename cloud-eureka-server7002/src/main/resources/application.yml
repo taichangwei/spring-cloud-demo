@@ -1,5 +1,5 @@
 server:
-  port: 7001
+  port: 7002
 
 eureka:
   client:
@@ -7,10 +7,10 @@ eureka:
     fetch-registry: false
     service-url:
       #单实例情况defaultZone为自身，多实例情况defaultZone为集群其他的eurekaServer地址
-      #defaultZone: http://eureka7001.com:7001/eureka
-      defaultZone: http://eureka7002.com:7002/eureka
+      #defaultZone: http://eureka7002.com:7002/eureka
+      defaultZone: http://eureka7001.com:7001/eureka
   instance:
-    hostname: eureka7001.com
+    hostname: eureka7002.com
   server:
     #关闭自我保护机制，使不可用服务及时踢出
     enable-self-preservation: false

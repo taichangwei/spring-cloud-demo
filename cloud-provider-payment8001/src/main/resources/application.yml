@@ -22,7 +22,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://localhost:7001/eureka
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
   instance:
     prefer-ip-address: true
     #如果prefer-ip-address=true则优先使用ip调用该微服务，如果prefer-ip-address=false则优先使用hostname调用
