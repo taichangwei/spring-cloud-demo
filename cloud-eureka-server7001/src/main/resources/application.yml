@@ -7,4 +7,8 @@ eureka:
     fetch-registry: false
     service-url:
       defaultZone: http://localhost:7001/eureka
-
+  server:
+    #关闭自我保护机制，使不可用服务及时踢出
+    enable-self-preservation: false
+    #清除过期实例时间间隔，默认60毫秒
+    eviction-interval-timer-in-ms: 2000
