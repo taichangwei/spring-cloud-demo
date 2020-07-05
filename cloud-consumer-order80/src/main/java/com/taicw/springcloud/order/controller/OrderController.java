@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 public class OrderController {
 
     public static final String PAYMENT_URL = "http://localhost:8001";
+    public static final String CLOUD_PAYMENT_URL = "http://payment-service";
 
     private final RestTemplate restTemplate;
 
@@ -23,12 +24,12 @@ public class OrderController {
 
     @PostMapping
     public CommonResult<Payment> creatPayment(@RequestBody Payment payment) {
-        return restTemplate.postForObject(PAYMENT_URL + "/payment", payment, CommonResult.class);
+        return restTemplate.postForObject(CLOUD_PAYMENT_URL + "/payment", payment, CommonResult.class);
     }
 
     @GetMapping(value = "/{id}")
     public CommonResult<Payment> getPaymentById(@PathVariable(value = "id") Long id){
-        return restTemplate.getForObject(PAYMENT_URL + "/payment/" + id, CommonResult.class);
+        return restTemplate.getForObject(CLOUD_PAYMENT_URL + "/payment/" + id, CommonResult.class);
     }
 
 

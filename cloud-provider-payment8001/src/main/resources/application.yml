@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: cloud-payment-service
+    name: payment-service
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource #当前数据源操作类型
     driver-class-name: org.gjt.mm.mysql.Driver   #mysql驱动包
@@ -15,3 +15,16 @@ spring:
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.taicw.springcloud.entities
+
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+  instance:
+    prefer-ip-address: true
+    #如果prefer-ip-address=true则优先使用ip调用该微服务，如果prefer-ip-address=false则优先使用hostname调用
+    hostname: payment.com
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}

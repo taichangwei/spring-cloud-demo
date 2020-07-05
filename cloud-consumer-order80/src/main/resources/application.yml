@@ -1,2 +1,18 @@
 server:
   port: 80
+
+spring:
+  application:
+    name: order-service
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka
+  instance:
+    prefer-ip-address: true
+    #如果prefer-ip-address=true则优先使用ip调用该微服务，如果prefer-ip-address=false则优先使用hostname调用
+    hostname: order.com
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}

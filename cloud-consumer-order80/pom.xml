@@ -14,12 +14,26 @@
 
     <dependencies>
 
+        <!-- 内部项目 -->
         <dependency>
             <groupId>com.taicw.springcloud</groupId>
             <artifactId>cloud-api-common</artifactId>
             <version>${project.version}</version>
         </dependency>
 
+        <!-- 微服务相关组件 -->
+        <!-- eureka 老版本引入方法 -->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.cloud</groupId>-->
+        <!--            <artifactId>spring-cloud-starter-eureka</artifactId>-->
+        <!--        </dependency>-->
+        <!-- eureka 新版本引入方法 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
+        <!-- springBoot 相关 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
