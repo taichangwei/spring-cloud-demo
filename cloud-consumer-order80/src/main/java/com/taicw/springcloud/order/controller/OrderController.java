@@ -15,7 +15,7 @@ import java.util.Map;
  * @author taichangwei
  */
 @RestController
-@RequestMapping(value = "/payment")
+@RequestMapping(value = "/order")
 public class OrderController {
 
     public static final String PAYMENT_URL = "http://localhost:8001";
@@ -30,12 +30,12 @@ public class OrderController {
         this.discoveryClient = discoveryClient;
     }
 
-    @PostMapping
+    @PostMapping(value = "/payment")
     public CommonResult<Payment> creatPayment(@RequestBody Payment payment) {
         return restTemplate.postForObject(CLOUD_PAYMENT_URL + "/payment", payment, CommonResult.class);
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/payment/{id}")
     public CommonResult<Payment> getPaymentById(@PathVariable(value = "id") Long id){
         return restTemplate.getForObject(CLOUD_PAYMENT_URL + "/payment/" + id, CommonResult.class);
     }

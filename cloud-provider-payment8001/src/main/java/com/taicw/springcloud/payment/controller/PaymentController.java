@@ -26,9 +26,9 @@ public class PaymentController {
     public CommonResult<Payment> create(@RequestBody Payment payment){
         int result = paymentService.create(payment);
         if (result > 0) {
-            return new CommonResult<>(200, "插入数据成功，server-port:" + serverPort, payment);
+            return new CommonResult<>(200, "server-port:" + serverPort + "插入数据成功", payment);
         } else {
-            return new CommonResult<>(500, "数据插入失败, server-port:" + serverPort);
+            return new CommonResult<>(500, "server-port:" + serverPort + "插入数据失败");
         }
     }
 
@@ -36,9 +36,9 @@ public class PaymentController {
     public CommonResult<Payment> getPaymentById(@PathVariable(value = "id") Long id){
         Payment payment = paymentService.getPaymentById(id);
         if (payment != null) {
-            return new CommonResult<>(200, "查询数据成功，server-port:" + serverPort, payment);
+            return new CommonResult<>(200, "server-port:" + serverPort + "查询数据成功", payment);
         } else {
-            return new CommonResult<>(404, "查询数据失败，server-port:" + serverPort);
+            return new CommonResult<>(404, "server-port:" + serverPort + "查询数据失败");
         }
     }
 
