@@ -20,7 +20,7 @@ import java.util.Map;
 @RequestMapping(value = "/order")
 public class OrderController {
 
-    public static final String PAYMENT_URL = "http://localhost:8001";
+    public static final String PAYMENT_URL = "http://localhost:8004";
     public static final String CLOUD_PAYMENT_URL = "http://paymentzk-service";
 
     @Autowired

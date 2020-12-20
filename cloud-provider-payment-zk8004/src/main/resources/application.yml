@@ -8,4 +8,5 @@ spring:
     zookeeper:
       connect-string: 192.168.199.116:2181
       discovery:
-        instance-id: orsesssdf
+        #每个服务在zookeeper创建的均为临时节点。这里不配置默认zookeeper的节点名是uuid
+        instance-id: payment-${server.port}
