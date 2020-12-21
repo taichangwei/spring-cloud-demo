@@ -6,6 +6,8 @@ import com.taicw.springcloud.payment.service.PaymentService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 /**
  * @author taichangwei
  */
@@ -40,6 +42,11 @@ public class PaymentController {
         } else {
             return new CommonResult<>(404, "server-port:" + serverPort + "查询数据失败");
         }
+    }
+
+    @GetMapping("/lb")
+    public String testLoadBalanced(){
+        return "current payment serverPort: " + serverPort + " | " + UUID.randomUUID().toString();
     }
 
 }

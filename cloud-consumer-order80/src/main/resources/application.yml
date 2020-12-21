@@ -22,3 +22,9 @@ eureka:
     lease-renewal-interval-in-seconds: 3
     #Eureka服务端最后一次接收到客户端心跳后等待的时间上线，超时踢出该实例。默认90秒
     lease-expiration-duration-in-seconds: 5
+
+
+# 通过属性配置修改ribbon负载均衡策略。格式：serviceId.ribbon.NFLoadBalancerRuleClassName=com.netflix.loadbalancer.WeightedResponseTimeRule
+payment-service:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
