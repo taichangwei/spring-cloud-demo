@@ -9,9 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cloud-consumer-order-consul80</artifactId>
+    <artifactId>cloud-consumer-order-feign80</artifactId>
 
     <dependencies>
+
         <!-- 内部项目 -->
         <dependency>
             <groupId>com.taicw.springcloud</groupId>
@@ -31,10 +32,16 @@
         </dependency>
 
 
-        <!-- 以consul作为服务注册中心 -->
+        <!-- 以eureka作为服务注册中心 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
+        <!--openfeign-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
 
 
@@ -44,6 +51,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
 </project>

@@ -25,6 +25,6 @@ eureka:
 
 
 # 通过属性配置修改ribbon负载均衡策略。格式：serviceId.ribbon.NFLoadBalancerRuleClassName=com.netflix.loadbalancer.WeightedResponseTimeRule
-payment-service:
-  ribbon:
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+#payment-service:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule

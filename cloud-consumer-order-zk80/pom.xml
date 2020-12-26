@@ -31,7 +31,7 @@
         </dependency>
 
 
-        <!-- 以zookeeper作为服务中心 -->
+        <!-- 以zookeeper作为服务注册中心 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>

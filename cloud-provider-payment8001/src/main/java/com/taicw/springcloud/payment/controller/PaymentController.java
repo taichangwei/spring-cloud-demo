@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author taichangwei
@@ -44,9 +45,24 @@ public class PaymentController {
         }
     }
 
+    //起多个payment-service 实例，用于测试ribbon的负载均衡策略
     @GetMapping("/lb")
     public String testLoadBalanced(){
         return "current payment serverPort: " + serverPort + " | " + UUID.randomUUID().toString();
+    }
+
+
+    /**
+     * 用于模拟业务逻辑处理正确，但是需要耗费n秒钟
+     */
+    @GetMapping("/timeOut/{time}")
+    public String testTimeOut(@PathVariable(value = "time") Integer time) {
+        try {
+            TimeUnit.SECONDS.sleep(time);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return "业务逻辑处理耗时"+ time+" 秒 | current payment serverPort: " + serverPort + " | " + UUID.randomUUID().toString();
     }
 
 }
