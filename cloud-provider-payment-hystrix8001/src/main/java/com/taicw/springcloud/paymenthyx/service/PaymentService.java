@@ -37,7 +37,7 @@ public class PaymentService {
      * paymentInfoTimeOut 方法调用超时或异常的兜底方法
      */
     public String paymentInfoTimeFallback(Integer id){
-        return "线程池：" + Thread.currentThread().getName() + "  |  paymentInfoTimeOut, id:" + id + " | 系统繁忙，请稍后再试";
+        return "线程池：" + Thread.currentThread().getName() + "  |  paymentInfoTimeFallback, id:" + id + " | 系统繁忙，请稍后再试";
     }
 
 }
