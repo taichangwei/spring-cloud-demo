@@ -18,4 +18,4 @@ eureka:
 
 feign:
   hystrix:
-    enabled: true
+    enabled: true #如果处理feign自身的容错就开启。然后在@FeignClient内指定fallback参数

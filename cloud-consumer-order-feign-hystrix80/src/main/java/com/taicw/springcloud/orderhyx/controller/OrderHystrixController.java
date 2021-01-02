@@ -62,4 +62,14 @@ public class OrderHystrixController {
         return "我是全局fallback方法，没有特别指明fallbackMethod就调用我。系统繁忙，请稍后再试，/(ㄒoㄒ)/~~";
     }
 
+    /**
+     * 测试针对feignClient配置的fallback。
+     * 1.首先方法并没有添加 @HystrixCommand 注解；2.paymentService故意停掉模拟宕机的情况，触发feignClient走fallback
+     */
+    @GetMapping("/payment/hystrix/feign/{id}")
+    public String testFeignFallback(@PathVariable("id") Integer id) {
+        String result = paymentHystrixService.paymentInfoOk(id);
+        return "order: " + result;
+    }
+
 }
