@@ -65,4 +65,18 @@ public class PaymentController {
         return "业务逻辑处理耗时"+ time+" 秒 | current payment serverPort: " + serverPort + " | " + UUID.randomUUID().toString();
     }
 
+
+    @GetMapping("/abc/def/{name}")
+    public String testGatewayRout1(@PathVariable(value = "name") String name) {
+        return "GET | payment:" + serverPort +" | " + name +" | time:" + System.currentTimeMillis();
+    }
+    @GetMapping("/abc")
+    public String testGatewayRout2(@RequestParam(value = "name", required = false) String name) {
+        return "GET | payment:" + serverPort +" | " + name +" | time:" + System.currentTimeMillis();
+    }
+    @PostMapping("/abc")
+    public String testGatewayRout3(@RequestParam(value = "name", required = false) String name) {
+        return "POST | payment:" + serverPort +" | " + name +" | time:" + System.currentTimeMillis();
+    }
+
 }
