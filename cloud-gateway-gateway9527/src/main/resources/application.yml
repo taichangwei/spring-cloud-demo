@@ -9,6 +9,8 @@ spring:
       discovery:
         locator:
           enabled: true #开启从注册中心动态创建路由的功能，利用微服务名进行路由
+      default-filters:
+        - AddResponseHeader=name, jack # 向响应头中添加参数name，值为jack。 默认过滤器，对所有路由多有效
       routes:
         - id: payment-route1 #路由的ID，没有固定规则但要求唯一，建议配合服务名
 #          uri: http://localhost:8001 #匹配后提供服务的路由地址
@@ -18,6 +20,9 @@ spring:
 #            - After=2020-08-21T15:51:37.485+08:00[Asia/Shanghai] # 请求时间在指定时间后的进行路由
 #            - Cookie=username, zhangsan # cookie 包含username属性并且值为张三的进行路由
 #            - Header=X-Request-Id, \d+  # 请求头要有X-Request-Id属性并且值为整数的进行路由
+          filters:
+            - AddRequestHeader=request-id, req123456   #向请求头中添加参数 request-id，值为 req123456
+            - AddResponseHeader=response-id, res654321 #向响应头中添加参数 response-id，值为 res654321
         - id: payment-rout2
 #          uri: http://localhost:8001
           uri: lb://payment-service
