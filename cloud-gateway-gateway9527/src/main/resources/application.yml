@@ -6,16 +6,21 @@ spring:
     name: gateway-service
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true #开启从注册中心动态创建路由的功能，利用微服务名进行路由
       routes:
         - id: payment-route1 #路由的ID，没有固定规则但要求唯一，建议配合服务名
-          uri: http://localhost:8001 #匹配后提供服务的路由地址
+#          uri: http://localhost:8001 #匹配后提供服务的路由地址
+          uri: lb://payment-service # 动态路由，其中uri中的协议为"lb"，表示启用gateway的负载均衡功能
           predicates:
             - Path=/payment/abc/** # 断言，路径相匹配的进行路由
 #            - After=2020-08-21T15:51:37.485+08:00[Asia/Shanghai] # 请求时间在指定时间后的进行路由
 #            - Cookie=username, zhangsan # cookie 包含username属性并且值为张三的进行路由
 #            - Header=X-Request-Id, \d+  # 请求头要有X-Request-Id属性并且值为整数的进行路由
         - id: payment-rout2
-          uri: http://localhost:8001
+#          uri: http://localhost:8001
+          uri: lb://payment-service
           predicates:
             - Path=/payment/lb/**
 
